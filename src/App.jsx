@@ -1,11 +1,11 @@
-import './App.css'
+import Header from "./components/Header.jsx";
 
 function App() {
-
+  
   return (
-    <>
-      <h1>Hello from App.jsx</h1>
-    </>
+    <div className="container">
+      <Header title="Task Tracker"/>
+    </div>
   )
 }
 
