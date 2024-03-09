@@ -1,17 +1,19 @@
 import PropTypes from 'prop-types'
 import {FaTimes}  from 'react-icons/fa';
 
-const Task = ({key,task,day, onDelete}) => {
+const Task = ({task, onDelete, onToggle}) => {
   return (
-    <div className="task">
-      <h3 id={key}>{task} <FaTimes style={{color: 'red', cursor: 'pointer'}} onClick={onDelete}/></h3>
-      <p>{day}</p>
+    <div className={`task ${task.reminder ? 'reminder' : ''}`} onDoubleClick={()=>onToggle(task.id)}>
+      <h3> {task.name} <FaTimes style={{color: 'red', cursor: 'pointer'}} onClick={()=>onDelete(task.id)}/></h3>
+      <p>{task.day}</p>
     </div>
   )
 }
 
 Task.propTypes = {
-    name: PropTypes.string,
+    task: PropTypes.object,
+    onDelete: PropTypes.func,
+    onToggle: PropTypes.func,
 }
 
 export default Task
